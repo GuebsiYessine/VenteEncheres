@@ -7,12 +7,9 @@ import lombok.Data;
 @Entity
 @Table(name = "participation_enchere")
 @Data
-public class ParticipationEnchere {
+public class ParticipationEnchere extends Super {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private int id;
+   
 
     @ManyToOne
     @JoinColumn(name = "acheteur_id")
@@ -22,10 +19,16 @@ public class ParticipationEnchere {
     @JoinColumn(name = "enchere_id")
     private Enchere enchere;
 
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "utilisateur_id")
     private Utilisateur utilisateur;
+
+	/*public Utilisateur getUtilisateur() {
+		
+		return utilisateur;
+	}
 */
+
     
 }
 

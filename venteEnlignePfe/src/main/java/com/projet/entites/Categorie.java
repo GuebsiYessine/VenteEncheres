@@ -9,12 +9,9 @@ import lombok.Data;
 @Entity
 @Table(name = "categorie")
 @Data
-public class Categorie {
+public class Categorie extends Super {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private int id;
+    
 
     @NotBlank
     @Column(name = "nom", nullable = false)

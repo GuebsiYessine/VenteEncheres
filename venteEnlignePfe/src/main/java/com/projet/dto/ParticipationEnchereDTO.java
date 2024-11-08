@@ -1,15 +1,14 @@
 package com.projet.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-public class ParticipationEnchereDTO {
 
-    private int id;
+@Data
+public class ParticipationEnchereDTO extends SuperDTO {
+
+    
     private UtilisateurDTO utilisateur;
     private EnchereDTO enchere;
-
+    
     
 }

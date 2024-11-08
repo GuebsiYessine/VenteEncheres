@@ -10,13 +10,10 @@ import lombok.Data;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table ( name = "utilisateur")
 @Data
-public  class Utilisateur {
+public  class Utilisateur extends Super {
 
     
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private int id;
+	
 
     @NotBlank
     @Column(name = "nom", nullable = false)

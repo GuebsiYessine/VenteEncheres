@@ -1,20 +1,27 @@
 package com.projet.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
 
-@Getter
-@Setter
-public class ArticleDTO {
 
-    private int id;
+@Data
+public class ArticleDTO extends SuperDTO {
+
+	 @NotBlank
     private String titre;
+	 @NotBlank
     private String description;
+	 @NotBlank
     private int quantiteStock;
+	 @NotBlank
     private double prixInitial;
+	 @NotBlank
     private double prixVente;
+	 @NotBlank
     private String statut;
+	
+	
+	}
     
     
-}
 

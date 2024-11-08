@@ -3,13 +3,16 @@ package com.projet.dto;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 @Data
-public class EnchereDTO {
+public class EnchereDTO extends SuperDTO {
 
-    private int id;
+	 @NotBlank
     private Date dateFin;
+	 @NotBlank
     private Date dateDebut;
+	 @NotBlank
     private String statut;
     private List<ArticleDTO> articles;
     

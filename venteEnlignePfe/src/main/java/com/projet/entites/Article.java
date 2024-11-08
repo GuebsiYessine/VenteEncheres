@@ -4,15 +4,15 @@ import java.util.List;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "article")
-public class Article {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private int id;
+public class Article extends Super  {
+
+    
 
     @NotBlank
     @Column(name = "titre", nullable = false)

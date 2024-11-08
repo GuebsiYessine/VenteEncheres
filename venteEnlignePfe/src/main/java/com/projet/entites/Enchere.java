@@ -7,15 +7,13 @@ import java.util.Set;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
-
+@Data
 @Entity
 @Table(name = "enchere")
-@Data
-public class Enchere {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class Enchere extends Super {
+
+    
 
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
@@ -25,17 +23,15 @@ public class Enchere {
     @NotNull
     private Date dateFin;
 
-    @OneToMany(mappedBy = "enchere")
-    private Set<Article> articles;
-    // a verifier 
+   /*@ManyToOne(mappedBy = "enchere")
+    private Set<Article> articles;*/
+    
     @ManyToOne
     @JoinColumn(name = "article_id")
-    private Article article;
+    private Article article; 
 
     @OneToMany(mappedBy = "enchere", cascade = CascadeType.ALL)
     private List<ParticipationEnchere> participations;
     
-    @ManyToOne
-    @JoinColumn(name = "admin_id")
-    private Administrateur administrateur;
+    
 }
