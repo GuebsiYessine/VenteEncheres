@@ -1,31 +1,43 @@
 package com.projet.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.projet.entites.Grade;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class UtilisateurDTO extends SuperDTO {
+@NoArgsConstructor
+@AllArgsConstructor
 
-	 @NotBlank
-	    private String nom;
-	 @NotBlank
-	    private String prenom;
-	 @NotBlank
-	    private String email;
-	 @NotBlank
-	    private String numeroTel;
-	 @NotBlank
-	    private String type;
-	 @NotBlank
-	    private String pays;
-	 @NotBlank
-	    private String ville;
-	 @NotBlank
-	    private String codePostal;
-	 @NotBlank
-	    private int cin;
+public class UtilisateurDto {
+
+    private String nom;
+
+
+    private String prenom;
+
+
+
+    private String email;
+
+
+    private String motdepasse;
+
     
-}
 
+    private String numeroTel;
+
+
+private Grade grade;
+
+
+	@JsonIgnoreProperties("vendeur")
+    private List<ArticleDto> articles;
+
+}

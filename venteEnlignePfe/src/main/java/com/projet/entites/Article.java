@@ -2,53 +2,62 @@ package com.projet.entites;
 
 import java.util.List;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 
-@Data
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
-@Table(name = "article")
-
-public class Article extends Super  {
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitialiser","handler"})
+public class Article extends BaseEntity  {
 
     
 
-    @NotBlank
+    
     @Column(name = "titre", nullable = false)
     private String titre;
 
-    @NotBlank
+    
     @Column(name = "description", nullable = false)
     private String description;
 
-    @Min(1)
+    
     @Column(name = "quantiteStock", nullable = false)
     private int quantiteStock;
 
-    @NotNull
+    
     @Column(name = "prixInitial", nullable = false)
     private double prixInitial;
 
-    @NotNull
+    
     @Column(name = "prixVente")
     private double prixVente;
 
-    @NotNull
+    
     @Column(name = "statut", nullable = false)
     private String statut;
     
     
-    @ManyToOne
-    @JoinColumn(name = "vendeur_id")
-    private Vendeur vendeur;
+    @ManyToOne(optional = false)
+    
+    private Utilisateur vendeur;
 
-    @ManyToOne
-    @JoinColumn(name = "categorie_id")
-    private Categorie categorie;
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    
+    private List<Categorie> categories;
     
     @ManyToOne
-    @JoinColumn(name = "enchere_id")
     private Enchere enchere;
 
     // a verifier 

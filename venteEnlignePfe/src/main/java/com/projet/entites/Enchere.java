@@ -1,27 +1,36 @@
 package com.projet.entites;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.Data;
-@Data
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 @Entity
-@Table(name = "enchere")
-
-public class Enchere extends Super {
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitialiser","handler"})
+public class Enchere extends BaseEntity {
 
     
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
-    private Date dateDebut;
+    
+    
+    private LocalDateTime dateDebut;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
-    private Date dateFin;
+   
+    private LocalDateTime dateFin;
 
    /*@ManyToOne(mappedBy = "enchere")
     private Set<Article> articles;*/
@@ -29,9 +38,12 @@ public class Enchere extends Super {
     @ManyToOne
     @JoinColumn(name = "article_id")
     private Article article; 
-
-    @OneToMany(mappedBy = "enchere", cascade = CascadeType.ALL)
-    private List<ParticipationEnchere> participations;
-    
+    @ManyToMany(mappedBy = "encheres")
+private List<Utilisateur> participants;
+    @Enumerated(EnumType.STRING)
+    private Etat etat;
+    private double montantDepart;
+    @OneToMany(mappedBy = "enchere")
+    private List<Participation> participations;
     
 }

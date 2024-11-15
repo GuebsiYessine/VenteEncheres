@@ -1,27 +1,51 @@
 package com.projet.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
 
 
-@Data
-public class ArticleDTO extends SuperDTO {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-	 @NotBlank
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class ArticleDto {
+
+    
+
+    
     private String titre;
-	 @NotBlank
-    private String description;
-	 @NotBlank
-    private int quantiteStock;
-	 @NotBlank
-    private double prixInitial;
-	 @NotBlank
-    private double prixVente;
-	 @NotBlank
-    private String statut;
-	
-	
-	}
-    
+
     
 
+    private String description;
+
+    
+
+    private int quantiteStock;
+
+    
+ 
+    private double prixInitial;
+
+    
+ 
+    private double prixVente;
+
+    
+ 
+    private String statut;
+    
+    
+ 
+    @JsonIgnoreProperties("article")
+    private UtilisateurDto vendeur;
+
+ 
+    
+}
